@@ -22,6 +22,7 @@ object Versions {
     const val junit = "4.12"
     const val testRunner = "1.2.0"
     const val espresso = "3.2.0"
+    const val timber = "4.7.1"
 }
 
 object Config {
@@ -43,6 +44,8 @@ object Plugins {
 }
 
 object Libraries {
+    // TIMBER
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object KotlinLibraries {
