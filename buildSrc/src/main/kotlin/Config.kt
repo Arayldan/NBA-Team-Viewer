@@ -23,6 +23,7 @@ object Versions {
     const val testRunner = "1.2.0"
     const val espresso = "3.2.0"
     const val timber = "4.7.1"
+    const val ktlint = "0.34.2"
 }
 
 object Config {
@@ -46,6 +47,8 @@ object Plugins {
 object Libraries {
     // TIMBER
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    // KTLINT
+    const val ktlint = "com.pinterest:ktlint:${Versions.ktlint}"
 }
 
 object KotlinLibraries {
