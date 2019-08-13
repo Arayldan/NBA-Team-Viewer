@@ -42,6 +42,6 @@ internal class TeamRepositoryImpl(
     }
 
     override suspend fun getTeam(forceRefresh: Boolean, id: Int): LiveData<Resource<Team>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }
