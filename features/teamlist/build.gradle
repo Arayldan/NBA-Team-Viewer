@@ -1,0 +1,15 @@
+apply from: "$rootDir/android_feature_dependencies.gradle"
+apply plugin: Plugins.safeArgs
+
+android {
+    defaultConfig {
+        testInstrumentationRunner Config.testInstrumentationRunner
+    }
+}
+
+dependencies {
+    // TEST
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.espresso
+}

@@ -6,8 +6,16 @@ object ApplicationId {
 
 object Modules {
     const val app = ":app"
+
     const val navigation = ":navigation"
+
     const val common = ":common"
+
+    const val featureTeamList = ":teamlist"
+}
+
+object FeaturePaths {
+    const val teamList = "features/teamlist"
 }
 
 object Releases {
