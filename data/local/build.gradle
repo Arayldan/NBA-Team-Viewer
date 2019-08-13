@@ -1,6 +1,6 @@
 apply plugin: Plugins.androidLibrary
-apply plugin: Plugins.kotlinKapt
 apply from: "$rootDir/android_commons.gradle"
+apply plugin: Plugins.kotlinKapt
 
 android {
     defaultConfig {

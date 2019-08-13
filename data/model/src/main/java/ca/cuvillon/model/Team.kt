@@ -1,6 +1,5 @@
 package ca.cuvillon.model
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -18,9 +17,5 @@ data class Team(
     val wins: Int,
 
     @SerializedName("losses")
-    val losses: Int,
-
-    @SerializedName("players")
-    @Embedded(prefix = "player_")
-    val players: List<Player>
+    val losses: Int
 )
