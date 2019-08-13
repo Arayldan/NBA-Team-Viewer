@@ -6,15 +6,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ca.cuvillon.model.entities.Team
 import ca.cuvillon.repository.utils.Resource
 
-object TeamListBinding {
+internal object TeamListBinding {
 
-    @BindingAdapter("app:items")
+    @BindingAdapter("items")
     @JvmStatic
     fun setItems(recyclerView: RecyclerView, resource: Resource<List<Team>>?) {
         resource?.data?.let((recyclerView.adapter as TeamListAdapter)::submitList)
     }
 
-    @BindingAdapter("app:showWhenLoading")
+    @BindingAdapter("showWhenLoading")
     @JvmStatic
     fun <T> showWhenLoading(view: SwipeRefreshLayout, resource: Resource<T>?) {
         if (resource != null) {

@@ -17,14 +17,14 @@
                 android:id="@+id/fragment_team_list_swipe_to_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:showWhenLoading="@{viewmodel.teams}"
+                showWhenLoading="@{viewmodel.teams}"
                 app:onRefreshListener="@{() -> viewmodel.refreshTeams()}">
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fragment_team_list_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:items="@{viewmodel.teams}"
+                    items="@{viewmodel.teams}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

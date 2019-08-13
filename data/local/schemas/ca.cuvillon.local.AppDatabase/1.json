@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e7e5ba45592603f3764ad5ac6126dc96",
+    "identityHash": "5800a99ff23da480b948e93ff679b78e",
     "entities": [
       {
         "tableName": "Team",
@@ -95,7 +95,16 @@
           ],
           "autoGenerate": false
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_Player_team_id",
+            "unique": false,
+            "columnNames": [
+              "team_id"
+            ],
+            "createSql": "CREATE  INDEX `index_Player_team_id` ON `${TABLE_NAME}` (`team_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "Team",
@@ -114,7 +123,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e7e5ba45592603f3764ad5ac6126dc96')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5800a99ff23da480b948e93ff679b78e')"
     ]
   }
 }

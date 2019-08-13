@@ -31,6 +31,6 @@ data class Player(
     @ColumnInfo(name = "number")
     val number: Int,
 
-    @ColumnInfo(name = "team_id")
+    @ColumnInfo(name = "team_id", index = true)
     val teamId: Int
 )

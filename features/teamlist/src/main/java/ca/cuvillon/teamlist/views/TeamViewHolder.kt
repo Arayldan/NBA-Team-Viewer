@@ -10,6 +10,5 @@ internal class TeamViewHolder(private val binding: ItemTeamlistBinding) : Recycl
     fun bindTo(team: Team, viewModel: TeamListViewModel) {
         binding.team = team
         binding.viewmodel = viewModel
-        binding.executePendingBindings()
     }
 }
