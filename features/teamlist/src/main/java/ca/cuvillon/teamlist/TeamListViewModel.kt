@@ -33,6 +33,9 @@ internal class TeamListViewModel(
         getTeams(true)
     }
 
+    fun clickOnItem(team: Team) {
+    }
+
     private fun getTeams(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
         _teams.removeSource(teamsSource)
         withContext(dispatchers.io) { teamsSource = getTeamsUseCase(forceRefresh) }
