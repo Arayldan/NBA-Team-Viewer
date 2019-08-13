@@ -7,8 +7,7 @@ echo "Running static analysis..."
 # Format code using KtLint, then run Detekt and KtLint static analysis
 
 git diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs ktlint -F --relative . &&\
-./gradlew ktlintFormat detekt ktlint --daemon &&\
-git diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs ktlint --relative .
+./gradlew detekt --daemon
 
 status=$?
 
