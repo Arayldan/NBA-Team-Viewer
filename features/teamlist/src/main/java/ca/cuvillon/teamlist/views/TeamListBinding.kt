@@ -10,6 +10,6 @@ object TeamListBinding {
     @BindingAdapter("app:items")
     @JvmStatic
     fun setItems(recyclerView: RecyclerView, resource: Resource<List<Team>>?) {
-        resource?.data?.let { (recyclerView.adapter as TeamListAdapter).updateData(it) }
+        resource?.data?.let((recyclerView.adapter as TeamListAdapter)::submitList)
     }
 }
