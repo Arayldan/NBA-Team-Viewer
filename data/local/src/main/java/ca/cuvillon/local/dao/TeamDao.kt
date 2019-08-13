@@ -16,8 +16,12 @@ abstract class TeamDao(private val appDatabase: AppDatabase) : BaseDao<Team> {
     @Query("SELECT * FROM team WHERE id = :id")
     abstract suspend fun findById(id: Int): Team?
 
+    @Query("DELETE FROM team")
+    abstract suspend fun clear()
+
     @Transaction
     open suspend fun saveTeamsAndPlayers(teams: List<Team>, players: List<Player>) {
+        clear()
         insert(teams)
         appDatabase.playerDao().insert(players)
     }
