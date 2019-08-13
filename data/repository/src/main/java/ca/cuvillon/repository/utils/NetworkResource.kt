@@ -21,11 +21,16 @@ internal abstract class NetworkResource<Result, Request> {
             result.value = Resource.Loading(null)
         }
         CoroutineScope(coroutineContext).launch(supervisorJob) {
-            try {
-                fetchFromNetwork()
-            } catch (e: IOException) {
-                Timber.e(e, "An error happened")
-                setValue(Resource.Error(e, loadFromDb()))
+            if (shouldFetch()) {
+                try {
+                    fetchFromNetwork()
+                } catch (e: IOException) {
+                    Timber.e(e, "An error happened")
+                    setValue(Resource.Error(e, loadFromDb()))
+                }
+            } else {
+                Timber.d("Return data from local database")
+                setValue(Resource.Success(loadFromDb()))
             }
         }
         return this
@@ -37,6 +42,7 @@ internal abstract class NetworkResource<Result, Request> {
 
     private suspend fun fetchFromNetwork() {
         Timber.d("Fetch data from network")
+        setValue(Resource.Loading(loadFromDb())) // Quickly dispatch local data during loading
         val apiResponse = fetch()
         Timber.i("Data fetched from network")
         withContext(Dispatchers.IO) { saveRequest(apiResponse) }
@@ -51,6 +57,8 @@ internal abstract class NetworkResource<Result, Request> {
     }
 
     protected abstract suspend fun loadFromDb(): Result
+
+    protected abstract suspend fun shouldFetch(): Boolean
 
     protected abstract suspend fun fetch(): Request
 

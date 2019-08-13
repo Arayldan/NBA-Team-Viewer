@@ -25,6 +25,10 @@ internal class TeamRepositoryImpl(
                 return dao.getAll()
             }
 
+            override suspend fun shouldFetch(): Boolean {
+                return forceRefresh || dao.shouldRefresh()
+            }
+
             override suspend fun fetch(): List<TeamDto> {
                 return dataSource.getTeams()
             }
