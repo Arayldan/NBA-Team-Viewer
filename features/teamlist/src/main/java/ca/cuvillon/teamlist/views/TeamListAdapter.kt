@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ListAdapter
-import ca.cuvillon.model.Team
+import ca.cuvillon.model.entities.Team
 import ca.cuvillon.teamlist.R
 import ca.cuvillon.teamlist.TeamListViewModel
 import ca.cuvillon.teamlist.databinding.ItemTeamlistBinding

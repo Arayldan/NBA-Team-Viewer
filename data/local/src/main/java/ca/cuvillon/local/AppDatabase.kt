@@ -7,8 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ca.cuvillon.local.dao.PlayerDao
 import ca.cuvillon.local.dao.TeamDao
-import ca.cuvillon.model.Player
-import ca.cuvillon.model.Team
+import ca.cuvillon.model.entities.Player
+import ca.cuvillon.model.entities.Team
 
 @Database(entities = [Team::class, Player::class], version = AppDatabase.VERSION)
 @TypeConverters(Converters::class)

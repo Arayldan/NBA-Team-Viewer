@@ -1,7 +1,7 @@
 package ca.cuvillon.teamlist.views
 
 import androidx.recyclerview.widget.RecyclerView
-import ca.cuvillon.model.Team
+import ca.cuvillon.model.entities.Team
 import ca.cuvillon.teamlist.TeamListViewModel
 import ca.cuvillon.teamlist.databinding.ItemTeamlistBinding
 

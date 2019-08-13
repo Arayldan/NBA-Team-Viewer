@@ -5,7 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ca.cuvillon.common.base.BaseViewModel
-import ca.cuvillon.model.Team
+import ca.cuvillon.model.entities.Team
 import ca.cuvillon.repository.AppDispatchers
 import ca.cuvillon.repository.utils.Resource
 import ca.cuvillon.teamlist.domain.GetTeamsUseCase

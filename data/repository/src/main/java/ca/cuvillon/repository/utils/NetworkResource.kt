@@ -39,7 +39,7 @@ internal abstract class NetworkResource<Result, Request> {
         Timber.d("Fetch data from network")
         val apiResponse = fetch()
         Timber.i("Data fetched from network")
-        saveResult(processResponse(apiResponse))
+        withContext(Dispatchers.IO) { saveRequest(apiResponse) }
         setValue(Resource.Success(loadFromDb()))
     }
 
@@ -54,7 +54,5 @@ internal abstract class NetworkResource<Result, Request> {
 
     protected abstract suspend fun fetch(): Request
 
-    protected abstract suspend fun saveResult(result: Result)
-
-    protected abstract fun processResponse(response: Request): Result
+    protected abstract suspend fun saveRequest(request: Request)
 }
