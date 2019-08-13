@@ -37,7 +37,6 @@ internal class TeamRepositoryImpl(
                 val (teams, players) = request.toEntities(lastRefreshed = Date())
                 dao.saveTeamsAndPlayers(teams, players)
             }
-
         }.build().asLiveData()
     }
 }

@@ -21,5 +21,4 @@ object TeamListBinding {
             view.isRefreshing = resource is Resource.Loading
         }
     }
-
 }

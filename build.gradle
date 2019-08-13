@@ -19,6 +19,8 @@ plugins {
     id 'io.gitlab.arturbosch.detekt' version '1.0.0-RC16'
 }
 
+apply from: "$rootDir/git-hooks/git-hooks.gradle"
+
 allprojects {
     apply from: "$rootDir/ktlint.gradle"
     apply from: "$rootDir/detekt.gradle"

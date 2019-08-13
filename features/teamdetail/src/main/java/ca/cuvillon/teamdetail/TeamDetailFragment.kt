@@ -9,6 +9,6 @@ import ca.cuvillon.common.base.BaseViewModel
 internal class TeamDetailFragment : BaseFragment() {
 
     override fun getViewModel(): BaseViewModel {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -40,5 +40,4 @@ internal class TeamListViewModel(
             _teams.value = it
         }
     }
-
 }
