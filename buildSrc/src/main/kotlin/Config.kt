@@ -45,7 +45,7 @@ object Versions {
     const val timber = "4.7.1"
     const val ktlint = "0.34.2"
     const val navigation = "2.0.0"
-    const val lifecycle = "2.0.0"
+    const val lifecycle = "2.1.0-rc01"
     const val recyclerView = "1.0.0"
     const val koin = "2.0.1"
     const val room = "2.1.0"

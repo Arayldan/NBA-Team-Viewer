@@ -12,6 +12,7 @@ dependencies {
 
     // KOTLIN
     implementation KotlinLibraries.kotlin
+    implementation Libraries.coroutines
     // ANDROID
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.core
