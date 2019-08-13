@@ -1,0 +1,20 @@
+apply from: "$rootDir/android_feature_dependencies.gradle"
+apply plugin: Plugins.kotlinKapt
+apply plugin: Plugins.safeArgs
+
+android {
+    defaultConfig {
+        testInstrumentationRunner Config.testInstrumentationRunner
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    // TEST
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.espresso
+}

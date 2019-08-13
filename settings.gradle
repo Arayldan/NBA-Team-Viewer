@@ -6,6 +6,7 @@ include Modules.local
 include Modules.remote
 include Modules.repository
 include Modules.featureTeamList
+include Modules.featureTeamDetail
 
 // Set a custom path for the features modules.
 // This avoid to have an empty "data"/"features" module in  Android Studio.
@@ -14,3 +15,4 @@ project(Modules.local).projectDir = new File(rootDir, ModulePaths.local)
 project(Modules.remote).projectDir = new File(rootDir, ModulePaths.remote)
 project(Modules.repository).projectDir = new File(rootDir, ModulePaths.repository)
 project(Modules.featureTeamList).projectDir = new File(rootDir, ModulePaths.teamList)
+project(Modules.featureTeamDetail).projectDir = new File(rootDir, ModulePaths.teamDetail)

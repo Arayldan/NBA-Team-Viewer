@@ -17,6 +17,7 @@ object Modules {
     const val repository = ":repository"
 
     const val featureTeamList = ":teamlist"
+    const val featureTeamDetail = ":teamdetail"
 }
 
 object ModulePaths {
@@ -26,6 +27,7 @@ object ModulePaths {
     const val repository = "data/repository"
 
     const val teamList = "features/teamlist"
+    const val teamDetail = "features/teamdetail"
 }
 
 object Releases {
