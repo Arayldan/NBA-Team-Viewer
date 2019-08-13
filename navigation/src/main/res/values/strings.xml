@@ -1,3 +1,4 @@
 <resources>
     <string name="team_list_label">Team List</string>
+    <string name="team_detail_label">Team Detail</string>
 </resources>
