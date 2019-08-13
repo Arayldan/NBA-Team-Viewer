@@ -37,6 +37,7 @@ object Versions {
     const val navigation = "2.0.0"
     const val lifecycle = "2.0.0"
     const val recyclerView = "1.0.0"
+    const val koin = "2.0.1"
 }
 
 object Config {
@@ -65,6 +66,9 @@ object Libraries {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     // KTLINT
     const val ktlint = "com.pinterest:ktlint:${Versions.ktlint}"
+    // KOIN
+    const val koin = "org.koin:koin-android:${Versions.koin}"
+    const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
 }
 
 object KotlinLibraries {
@@ -83,7 +87,10 @@ object AndroidLibraries {
 }
 
 object TestLibraries {
+    // ANDROID
     const val junit = "junit:junit:${Versions.junit}"
     const val androidTestRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    // KOIN
+    const val koin = "org.koin:koin-test:${Versions.koin}"
 }

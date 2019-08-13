@@ -18,6 +18,9 @@ dependencies {
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
     // TESTING
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.androidTestRunner

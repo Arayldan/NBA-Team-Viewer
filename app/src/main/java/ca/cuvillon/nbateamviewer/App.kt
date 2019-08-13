@@ -2,6 +2,11 @@ package ca.cuvillon.nbateamviewer
 
 import android.app.Application
 import android.os.StrictMode
+import ca.cuvillon.nbateamviewer.di.appComponent
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import timber.log.Timber
 
 class App : Application() {
@@ -10,6 +15,11 @@ class App : Application() {
         super.onCreate()
         configureTimber()
         configureStrictMode()
+        configureDi()
+    }
+
+    private fun provideComponent(): List<Module> {
+        return appComponent
     }
 
     private fun configureTimber() {
@@ -34,6 +44,19 @@ class App : Application() {
                     .penaltyLog()
                     .build()
             )
+        }
+    }
+
+    private fun configureDi() {
+        startKoin {
+            if (BuildConfig.DEBUG) {
+                // Use Koin Android Logger
+                androidLogger()
+            }
+            // Declare Android context
+            androidContext(this@App)
+            // Declare modules to use
+            modules(provideComponent())
         }
     }
 }

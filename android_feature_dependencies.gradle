@@ -5,6 +5,10 @@ apply plugin: Plugins.androidLibrary
 apply from: "$rootDir/android_commons.gradle"
 
 dependencies {
+    implementation project(Modules.common)
+
+    implementation project(Modules.navigation)
+
     // KOTLIN
     implementation KotlinLibraries.kotlin
     // ANDROID
@@ -16,8 +20,7 @@ dependencies {
     implementation AndroidLibraries.recyclerView
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
-
-    implementation project(Modules.common)
-
-    implementation project(Modules.navigation)
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
 }
