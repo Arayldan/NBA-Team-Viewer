@@ -12,12 +12,14 @@ object Modules {
     const val common = ":common"
 
     const val model = ":model"
+    const val local = ":local"
 
     const val featureTeamList = ":teamlist"
 }
 
 object ModulePaths {
     const val model = "data/model"
+    const val local = "data/local"
 
     const val teamList = "features/teamlist"
 }
@@ -66,6 +68,7 @@ object Plugins {
     const val kotlinAndroid = "kotlin-android"
     const val kotlinExtensions = "kotlin-android-extensions"
     const val safeArgs = "androidx.navigation.safeargs.kotlin"
+    const val kotlinKapt = "kotlin-kapt"
 }
 
 object Libraries {

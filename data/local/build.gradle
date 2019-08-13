@@ -1,0 +1,25 @@
+apply plugin: Plugins.androidLibrary
+apply plugin: Plugins.kotlinKapt
+apply from: "$rootDir/android_commons.gradle"
+
+android {
+    defaultConfig {
+        testInstrumentationRunner Config.testInstrumentationRunner
+    }
+}
+
+dependencies {
+    // ROOM
+    kapt AndroidLibraries.roomCompiler
+    implementation AndroidLibraries.roomRunTime
+    implementation AndroidLibraries.roomKtx
+    // DATA
+    implementation project(Modules.model)
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
+    // TEST
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.espresso
+}
