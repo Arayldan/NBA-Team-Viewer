@@ -6,6 +6,7 @@ object ApplicationId {
 
 object Modules {
     const val app = ":app"
+    const val navigation = ":navigation"
 }
 
 object Releases {
@@ -24,6 +25,7 @@ object Versions {
     const val espresso = "3.2.0"
     const val timber = "4.7.1"
     const val ktlint = "0.34.2"
+    const val navigation = "2.0.0"
 }
 
 object Config {
@@ -36,12 +38,15 @@ object Config {
 object ClassPaths {
     const val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val safeArgsPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 }
 
 object Plugins {
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinExtensions = "kotlin-android-extensions"
+    const val safeArgs = "androidx.navigation.safeargs.kotlin"
 }
 
 object Libraries {
@@ -59,6 +64,8 @@ object AndroidLibraries {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val core = "androidx.core:core-ktx:${Versions.androidXCore}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val navigationFrag = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
 }
 
 object TestLibraries {
