@@ -5,4 +5,6 @@ dependencies {
     implementation project(Modules.navigation)
 
     implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
 }
