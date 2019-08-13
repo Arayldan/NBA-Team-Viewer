@@ -1,0 +1,6 @@
+package ca.cuvillon.common.base
+
+import androidx.lifecycle.ViewModel
+
+abstract class BaseViewModel: ViewModel() {
+}

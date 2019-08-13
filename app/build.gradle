@@ -25,4 +25,6 @@ dependencies {
     androidTestImplementation TestLibraries.espresso
     // NAVIGATION
     implementation project(Modules.navigation)
+    // COMMON
+    implementation project(Modules.common)
 }

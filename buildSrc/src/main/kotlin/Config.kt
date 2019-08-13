@@ -7,6 +7,7 @@ object ApplicationId {
 object Modules {
     const val app = ":app"
     const val navigation = ":navigation"
+    const val common = ":common"
 }
 
 object Releases {
