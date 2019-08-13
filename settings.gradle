@@ -1,8 +1,10 @@
 include Modules.app
 include Modules.navigation
 include Modules.common
+include Modules.model
 include Modules.featureTeamList
 
 // Set a custom path for the features modules.
-// This avoid to have an empty "features" module in  Android Studio.
-project(Modules.featureTeamList).projectDir = new File(rootDir, FeaturePaths.teamList)
+// This avoid to have an empty "data"/"features" module in  Android Studio.
+project(Modules.model).projectDir = new File(rootDir, ModulePaths.model)
+project(Modules.featureTeamList).projectDir = new File(rootDir, ModulePaths.teamList)

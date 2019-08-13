@@ -1,0 +1,5 @@
+apply plugin: Plugins.kotlin
+
+dependencies {
+    implementation KotlinLibraries.kotlin
+}

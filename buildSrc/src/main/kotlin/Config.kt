@@ -11,10 +11,14 @@ object Modules {
 
     const val common = ":common"
 
+    const val model = ":model"
+
     const val featureTeamList = ":teamlist"
 }
 
-object FeaturePaths {
+object ModulePaths {
+    const val model = "data/model"
+
     const val teamList = "features/teamlist"
 }
 
@@ -56,6 +60,7 @@ object ClassPaths {
 object Plugins {
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
+    const val kotlin = "kotlin"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinExtensions = "kotlin-android-extensions"
     const val safeArgs = "androidx.navigation.safeargs.kotlin"
