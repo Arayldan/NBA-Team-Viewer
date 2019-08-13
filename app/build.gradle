@@ -36,6 +36,7 @@ dependencies {
     implementation project(Modules.common)
     // FEATURES
     implementation project(Modules.featureTeamList)
+    implementation project(Modules.featureTeamDetail)
     // DATA
     implementation project(Modules.local)
     implementation project(Modules.remote)

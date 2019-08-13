@@ -12,6 +12,7 @@ import java.util.Date
 
 interface TeamRepository {
     suspend fun getTeams(forceRefresh: Boolean = false): LiveData<Resource<List<Team>>>
+    suspend fun getTeam(forceRefresh: Boolean = false, id: Int): LiveData<Resource<Team>>
 }
 
 internal class TeamRepositoryImpl(
@@ -38,5 +39,9 @@ internal class TeamRepositoryImpl(
                 dao.saveTeamsAndPlayers(teams, players)
             }
         }.build().asLiveData()
+    }
+
+    override suspend fun getTeam(forceRefresh: Boolean, id: Int): LiveData<Resource<Team>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
