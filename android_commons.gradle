@@ -19,5 +19,6 @@ android {
 }
 
 dependencies {
+    implementation KotlinLibraries.kotlin
     implementation Libraries.timber
 }

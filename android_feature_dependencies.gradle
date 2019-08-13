@@ -5,6 +5,19 @@ apply plugin: Plugins.androidLibrary
 apply from: "$rootDir/android_commons.gradle"
 
 dependencies {
+    // KOTLIN
+    implementation KotlinLibraries.kotlin
+    // ANDROID
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.core
+    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.lifecycleViewModel
+    implementation AndroidLibraries.lifecycleExtensions
+    implementation AndroidLibraries.recyclerView
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
+
     implementation project(Modules.common)
+
     implementation project(Modules.navigation)
 }

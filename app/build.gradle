@@ -15,10 +15,9 @@ android {
 
 dependencies {
     // ANDROID
-    implementation KotlinLibraries.kotlin
     implementation AndroidLibraries.appCompat
-    implementation AndroidLibraries.core
-    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
     // TESTING
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.androidTestRunner
@@ -27,4 +26,6 @@ dependencies {
     implementation project(Modules.navigation)
     // COMMON
     implementation project(Modules.common)
+    // FEATURES
+    implementation project(Modules.featureTeamList)
 }

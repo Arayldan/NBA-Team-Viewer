@@ -35,6 +35,8 @@ object Versions {
     const val timber = "4.7.1"
     const val ktlint = "0.34.2"
     const val navigation = "2.0.0"
+    const val lifecycle = "2.0.0"
+    const val recyclerView = "1.0.0"
 }
 
 object Config {
@@ -75,6 +77,9 @@ object AndroidLibraries {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val navigationFrag = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
 }
 
 object TestLibraries {
