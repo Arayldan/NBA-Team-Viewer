@@ -42,6 +42,8 @@ object Versions {
     const val lifecycle = "2.0.0"
     const val recyclerView = "1.0.0"
     const val koin = "2.0.1"
+    const val room = "2.1.0"
+    const val gson = "2.8.5"
 }
 
 object Config {
@@ -74,6 +76,8 @@ object Libraries {
     // KOIN
     const val koin = "org.koin:koin-android:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
 
 object KotlinLibraries {
@@ -89,6 +93,10 @@ object AndroidLibraries {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    // ROOM
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomRunTime = "androidx.room:room-runtime:${Versions.room}"
 }
 
 object TestLibraries {
