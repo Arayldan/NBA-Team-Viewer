@@ -25,12 +25,12 @@ internal class TeamRepositoryImpl(
 ) : TeamRepository {
 
     override suspend fun getTeams(forceRefresh: Boolean): LiveData<Resource<List<Team>>> {
-        return object : NetworkResource<List<Team>, List<TeamDto>>() {
-            override suspend fun loadFromDb(): List<Team> {
+        return object : NetworkResource<List<Team>, List<TeamDto>, List<TeamAndPlayers>>() {
+            override suspend fun loadFromDb(): List<Team>? {
                 return teamDao.getAll()
             }
 
-            override suspend fun shouldFetch(): Boolean {
+            override suspend fun shouldFetch(data: List<Team>?): Boolean {
                 return forceRefresh || shouldRefresh(teamDao.findMinimalLastRefreshed())
             }
 
@@ -38,14 +38,38 @@ internal class TeamRepositoryImpl(
                 return dataSource.getTeams()
             }
 
-            override suspend fun saveRequest(request: List<TeamDto>) {
-                teamPlayersDao.insert(request.toTeamAndPlayersEntity(lastRefreshed = Date()))
+            override suspend fun saveResult(result: List<TeamAndPlayers>) {
+                teamPlayersDao.insert(result)
+            }
+
+            override fun processResponse(response: List<TeamDto>): List<TeamAndPlayers> {
+                return response.toTeamAndPlayersEntity(lastRefreshed = Date())
             }
         }.build().asLiveData()
     }
 
     override suspend fun getTeamAndPlayers(forceRefresh: Boolean, id: Int): LiveData<Resource<TeamAndPlayers>> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        return object : NetworkResource<TeamAndPlayers, List<TeamDto>, List<TeamAndPlayers>>() {
+            override suspend fun loadFromDb(): TeamAndPlayers? {
+                return teamPlayersDao.findTeamWithPlayersById(id)
+            }
+
+            override suspend fun shouldFetch(data: TeamAndPlayers?): Boolean {
+                return forceRefresh || data == null || shouldRefresh(data.team.lastRefreshed)
+            }
+
+            override suspend fun fetch(): List<TeamDto> {
+                return dataSource.getTeams()
+            }
+
+            override suspend fun saveResult(result: List<TeamAndPlayers>) {
+                teamPlayersDao.insert(result)
+            }
+
+            override fun processResponse(response: List<TeamDto>): List<TeamAndPlayers> {
+                return response.toTeamAndPlayersEntity(lastRefreshed = Date())
+            }
+        }.build().asLiveData()
     }
 
     companion object {
