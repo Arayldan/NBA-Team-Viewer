@@ -13,12 +13,20 @@
             android:layout_height="match_parent"
             tools:context=".TeamListFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_team_list_rv"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/fragment_team_list_swipe_to_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:items="@{viewmodel.teams}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                app:showWhenLoading="@{viewmodel.teams}"
+                app:onRefreshListener="@{() -> viewmodel.refreshTeams()}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_team_list_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:items="@{viewmodel.teams}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
