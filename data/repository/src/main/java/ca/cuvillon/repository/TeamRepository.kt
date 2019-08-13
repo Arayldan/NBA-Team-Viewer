@@ -8,6 +8,7 @@ import ca.cuvillon.model.entities.Team
 import ca.cuvillon.remote.TeamDataSource
 import ca.cuvillon.repository.utils.NetworkResource
 import ca.cuvillon.repository.utils.Resource
+import java.util.Date
 
 interface TeamRepository {
     suspend fun getTeams(forceRefresh: Boolean = false): LiveData<Resource<List<Team>>>
@@ -29,7 +30,7 @@ internal class TeamRepositoryImpl(
             }
 
             override suspend fun saveRequest(request: List<TeamDto>) {
-                val (teams, players) = request.toEntities()
+                val (teams, players) = request.toEntities(lastRefreshed = Date())
                 dao.saveTeamsAndPlayers(teams, players)
             }
 

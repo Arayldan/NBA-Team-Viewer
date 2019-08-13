@@ -3,6 +3,7 @@ package ca.cuvillon.model.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity
 data class Team(
@@ -17,5 +18,8 @@ data class Team(
     val wins: Int,
 
     @ColumnInfo(name = "losses")
-    val losses: Int
+    val losses: Int,
+
+    @ColumnInfo(name = "last_refreshed")
+    val lastRefreshed: Date
 )
