@@ -4,6 +4,7 @@ include Modules.common
 include Modules.model
 include Modules.local
 include Modules.remote
+include Modules.repository
 include Modules.featureTeamList
 
 // Set a custom path for the features modules.
@@ -11,4 +12,5 @@ include Modules.featureTeamList
 project(Modules.model).projectDir = new File(rootDir, ModulePaths.model)
 project(Modules.local).projectDir = new File(rootDir, ModulePaths.local)
 project(Modules.remote).projectDir = new File(rootDir, ModulePaths.remote)
+project(Modules.repository).projectDir = new File(rootDir, ModulePaths.repository)
 project(Modules.featureTeamList).projectDir = new File(rootDir, ModulePaths.teamList)

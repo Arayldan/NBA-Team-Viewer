@@ -14,6 +14,7 @@ object Modules {
     const val model = ":model"
     const val local = ":local"
     const val remote = ":remote"
+    const val repository = ":repository"
 
     const val featureTeamList = ":teamlist"
 }
@@ -22,6 +23,7 @@ object ModulePaths {
     const val model = "data/model"
     const val local = "data/local"
     const val remote = "data/remote"
+    const val repository = "data/repository"
 
     const val teamList = "features/teamlist"
 }

@@ -1,0 +1,13 @@
+apply plugin: Plugins.androidLibrary
+apply from: "$rootDir/android_commons.gradle"
+
+dependencies {
+    // DATA
+    implementation project(Modules.remote)
+    implementation project(Modules.local)
+    api project(Modules.model)
+    // TEST
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.espresso
+}
