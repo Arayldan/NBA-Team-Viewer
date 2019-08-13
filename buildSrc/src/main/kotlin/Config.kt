@@ -52,6 +52,7 @@ object Versions {
     const val gson = "2.8.5"
     const val retrofit = "2.6.1"
     const val okHttp = "4.1.0"
+    const val coroutines = "1.2.2"
 }
 
 object Config {
@@ -90,6 +91,8 @@ object Libraries {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    // Coroutines
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }
 
 object KotlinLibraries {

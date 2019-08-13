@@ -6,6 +6,12 @@ dependencies {
     implementation project(Modules.remote)
     implementation project(Modules.local)
     api project(Modules.model)
+    // ANDROID
+    implementation AndroidLibraries.lifecycleExtensions
+    implementation Libraries.coroutines
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
     // TEST
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.androidTestRunner

@@ -8,6 +8,7 @@ dependencies {
     implementation project(Modules.common)
 
     implementation project(Modules.navigation)
+    implementation project(Modules.repository)
 
     // KOTLIN
     implementation KotlinLibraries.kotlin
