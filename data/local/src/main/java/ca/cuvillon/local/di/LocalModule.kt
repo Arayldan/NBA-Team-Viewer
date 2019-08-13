@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val localModule = module {
     single { AppDatabase.buildDatabase(androidContext()) }
-    factory { (get() as AppDatabase).teamDao() }
-    factory { (get() as AppDatabase).playerDao() }
+    factory { get<AppDatabase>().teamDao() }
+    factory { get<AppDatabase>().playerDao() }
 }

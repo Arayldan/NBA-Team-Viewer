@@ -48,6 +48,8 @@ object Versions {
     const val koin = "2.0.1"
     const val room = "2.1.0"
     const val gson = "2.8.5"
+    const val retrofit = "2.6.1"
+    const val okHttp = "4.1.0"
 }
 
 object Config {
@@ -81,8 +83,11 @@ object Libraries {
     // KOIN
     const val koin = "org.koin:koin-android:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-
+    // RETROFIT
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
 }
 
 object KotlinLibraries {

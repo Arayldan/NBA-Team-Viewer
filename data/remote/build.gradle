@@ -3,4 +3,14 @@ apply plugin: Plugins.kotlin
 dependencies {
     // KOTLIN
     implementation KotlinLibraries.kotlin
+    // NETWORK
+    implementation Libraries.retrofit
+    implementation Libraries.gson
+    implementation Libraries.retrofitGsonConverter
+    implementation Libraries.httpLoggingInterceptor
+    // DATA
+    implementation project(Modules.model)
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
 }

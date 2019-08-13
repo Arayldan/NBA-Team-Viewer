@@ -42,4 +42,5 @@ dependencies {
     implementation project(Modules.featureTeamList)
     // DATA
     implementation project(Modules.local)
+    implementation project(Modules.remote)
 }
