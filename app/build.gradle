@@ -15,6 +15,11 @@ android {
             }
         }
     }
+
+    dataBinding {
+        enabled true
+    }
+
     buildTypes {
         release {
             shrinkResources true
