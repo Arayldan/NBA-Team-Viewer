@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ca.cuvillon.local.dao.PlayerDao
 import ca.cuvillon.local.dao.TeamDao
+import ca.cuvillon.local.dao.TeamPlayersDao
 import ca.cuvillon.model.entities.Player
 import ca.cuvillon.model.entities.Team
 
@@ -18,6 +19,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun teamDao(): TeamDao
 
     abstract fun playerDao(): PlayerDao
+
+    abstract fun teamPlayersDao(): TeamPlayersDao
     //endregion
 
     companion object {

@@ -8,4 +8,5 @@ val localModule = module {
     single { AppDatabase.buildDatabase(androidContext()) }
     factory { get<AppDatabase>().teamDao() }
     factory { get<AppDatabase>().playerDao() }
+    factory { get<AppDatabase>().teamPlayersDao() }
 }

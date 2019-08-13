@@ -1,7 +1,7 @@
 package ca.cuvillon.model.dtos
 
-import ca.cuvillon.model.entities.Player
 import ca.cuvillon.model.entities.Team
+import ca.cuvillon.model.entities.TeamAndPlayers
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
@@ -22,18 +22,14 @@ data class TeamDto(
     val players: List<PlayerDto>
 )
 
-fun TeamDto.toEntity(lastRefreshed: Date): Team {
+fun TeamDto.toTeamEntity(lastRefreshed: Date): Team {
     return Team(id = id, name = name, wins = wins, losses = losses, lastRefreshed = lastRefreshed)
 }
 
-fun List<TeamDto>.toEntity(lastRefreshed: Date): List<Team> {
-    return map { it.toEntity(lastRefreshed) }
+fun TeamDto.toTeamAndPlayersEntity(lastRefreshed: Date): TeamAndPlayers {
+    return TeamAndPlayers(team = toTeamEntity(lastRefreshed), players = players.toEntity(id))
 }
 
-fun TeamDto.toEntities(lastRefreshed: Date): Pair<Team, List<Player>> {
-    return toEntity(lastRefreshed) to players.toEntity(id)
-}
-
-fun List<TeamDto>.toEntities(lastRefreshed: Date): Pair<List<Team>, List<Player>> {
-    return flatMap { toEntity(lastRefreshed) } to flatMap { it.players.toEntity(it.id) }
+fun List<TeamDto>.toTeamAndPlayersEntity(lastRefreshed: Date): List<TeamAndPlayers> {
+    return map { it.toTeamAndPlayersEntity(lastRefreshed) }
 }
