@@ -11,6 +11,7 @@ import ca.cuvillon.repository.utils.Resource
 import ca.cuvillon.teamlist.domain.GetTeamsUseCase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 /**
  * A [BaseViewModel] subclass that provide the data and handle logic to communicate with the model
@@ -34,6 +35,8 @@ internal class TeamListViewModel(
     }
 
     fun clickOnItem(team: Team) {
+        Timber.d("clickOnItem(%s)", team)
+        navigate(TeamListFragmentDirections.actionTeamListFragmentToTeamDetailFragment(team.id))
     }
 
     private fun getTeams(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {

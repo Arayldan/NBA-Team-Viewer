@@ -16,7 +16,7 @@
     </fragment>
 
     <fragment android:id="@+id/teamDetailFragment"
-              android:name="ca.cuvillon.teamdetail.TeamDetailFragmen"
+              android:name="ca.cuvillon.teamdetail.TeamDetailFragment"
               android:label="@string/team_detail_label">
         <argument android:name="teamId" app:argType="integer"/>
     </fragment>
