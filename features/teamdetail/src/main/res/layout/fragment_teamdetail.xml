@@ -35,6 +35,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     tools:text="Team Name"/>
             <TextView
+                    android:text="@{Integer.toString(viewmodel.teamAndPlayers.team.wins)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/fragment_team_detail_name_wins"
@@ -45,6 +46,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/fragment_team_detail_name_tv"
                     app:layout_constraintHorizontal_bias="0.0"/>
             <TextView
+                    android:text="@{Integer.toString(viewmodel.teamAndPlayers.team.losses)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/fragment_team_detail_name_losses"

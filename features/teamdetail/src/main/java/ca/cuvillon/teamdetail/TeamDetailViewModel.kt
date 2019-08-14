@@ -40,7 +40,7 @@ internal class TeamDetailViewModel(
         _teamAndPlayers.removeSource(teamAndPlayersSource)
         withContext(dispatchers.io) { teamAndPlayersSource = getTeamDetailUseCase(forceRefresh, argsTeamId) }
         _teamAndPlayers.addSource(teamAndPlayersSource) {
-            _teamAndPlayers.value = it.data
+            it?.data?.let(_teamAndPlayers::setValue)
             _isLoading.value = it is Resource.Loading
         }
     }
