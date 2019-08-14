@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import ca.cuvillon.common.base.BaseFragment
 import ca.cuvillon.common.base.BaseViewModel
+import ca.cuvillon.teamdetail.databinding.FragmentTeamdetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -16,14 +17,18 @@ internal class TeamDetailFragment : BaseFragment() {
 
     private val viewModel: TeamDetailViewModel by viewModel()
     private val args: TeamDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentTeamdetailBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_teamdetail, container, false)
+        binding = FragmentTeamdetailBinding.inflate(inflater, container, false)
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.loadDate(args.teamId)
+        viewModel.loadData(args.teamId)
     }
 
     override fun getViewModel(): BaseViewModel {

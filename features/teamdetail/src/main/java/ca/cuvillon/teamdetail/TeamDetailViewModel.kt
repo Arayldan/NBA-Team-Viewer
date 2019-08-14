@@ -20,20 +20,28 @@ internal class TeamDetailViewModel(
 
     private var argsTeamId: Int by Delegates.notNull()
 
-    private val _team = MediatorLiveData<Resource<TeamAndPlayers>>()
-    val team: LiveData<Resource<TeamAndPlayers>> get() = _team
-    private var teamSource: LiveData<Resource<TeamAndPlayers>> = MutableLiveData()
+    private val _teamAndPlayers = MediatorLiveData<TeamAndPlayers>()
+    val teamAndPlayers: LiveData<TeamAndPlayers> get() = _teamAndPlayers
+    private var teamAndPlayersSource: LiveData<Resource<TeamAndPlayers>> = MutableLiveData()
 
-    fun loadDate(teamId: Int) {
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
+    fun loadData(teamId: Int) {
         argsTeamId = teamId
         getTeam(false)
     }
 
+    fun refreshData() {
+        getTeam(true)
+    }
+
     private fun getTeam(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
-        _team.removeSource(teamSource)
-        withContext(dispatchers.io) { teamSource = getTeamDetailUseCase(forceRefresh, argsTeamId) }
-        _team.addSource(teamSource) {
-            _team.value = it
+        _teamAndPlayers.removeSource(teamAndPlayersSource)
+        withContext(dispatchers.io) { teamAndPlayersSource = getTeamDetailUseCase(forceRefresh, argsTeamId) }
+        _teamAndPlayers.addSource(teamAndPlayersSource) {
+            _teamAndPlayers.value = it.data
+            _isLoading.value = it is Resource.Loading
         }
     }
 }
