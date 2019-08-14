@@ -35,8 +35,14 @@ internal class TeamDetailViewModel(
         withContext(dispatchers.io) { teamAndPlayersSource = getTeamDetailUseCase(argsTeamId) }
         _teamAndPlayers.addSource(teamAndPlayersSource) {
             it?.data?.let(_teamAndPlayers::setValue)
-            if (it is Resource.Error) {
-                _snackbarError.value = Event(R.string.snack_default_error_message)
+            when {
+                it is Resource.Error -> {
+                    _snackbarError.value = Event(R.string.snack_default_error_message)
+                }
+                it is Resource.Success && it.data == null -> {
+                    _snackbarError.value = Event(R.string.snack_no_team_found_error_message)
+                    navigateBack()
+                }
             }
         }
     }
