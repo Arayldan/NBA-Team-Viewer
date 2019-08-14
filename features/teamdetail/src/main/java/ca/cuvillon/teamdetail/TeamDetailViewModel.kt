@@ -5,7 +5,6 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ca.cuvillon.common.base.BaseViewModel
-import ca.cuvillon.common.utils.Event
 import ca.cuvillon.model.entities.TeamAndPlayers
 import ca.cuvillon.repository.AppDispatchers
 import ca.cuvillon.repository.utils.Resource
@@ -37,10 +36,10 @@ internal class TeamDetailViewModel(
             it?.data?.let(_teamAndPlayers::setValue)
             when {
                 it is Resource.Error -> {
-                    _snackbarError.value = Event(R.string.snack_default_error_message)
+                    handleError(R.string.snack_default_error_message)
                 }
                 it is Resource.Success && it.data == null -> {
-                    _snackbarError.value = Event(R.string.snack_no_team_found_error_message)
+                    handleError(R.string.snack_no_team_found_error_message)
                     navigateBack()
                 }
             }

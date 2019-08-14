@@ -1,5 +1,6 @@
 package ca.cuvillon.common.base
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,8 +14,8 @@ abstract class BaseViewModel : ViewModel() {
     val navigation: LiveData<Event<NavigationCommand>> = _navigation
 
     // ERROR
-    protected val _snackbarError = MutableLiveData<Event<@androidx.annotation.StringRes Int>>()
-    val snackBarError: LiveData<Event<Int>> get() = _snackbarError
+    private val _snackBarError = MutableLiveData<Event<@StringRes Int>>()
+    val snackBarError: LiveData<Event<Int>> get() = _snackBarError
 
     /**
      * Handle navigation directly from [ViewModel].
@@ -23,7 +24,17 @@ abstract class BaseViewModel : ViewModel() {
         _navigation.value = Event(NavigationCommand.To(directions))
     }
 
+    /**
+     * Handle back navigation.
+     */
     fun navigateBack() {
         _navigation.value = Event(NavigationCommand.Back)
+    }
+
+    /**
+     * Display the error message in a snackBar.
+     */
+    protected fun handleError(@StringRes stringRes: Int) {
+        _snackBarError.value = Event(stringRes)
     }
 }
