@@ -8,25 +8,21 @@
         <variable name="viewmodel" type="ca.cuvillon.teamlist.TeamListViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/fragment_team_list_swipe_to_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".TeamListFragment">
+            tools:context=".TeamListFragment"
+            showWhenLoading="@{viewmodel.teams}"
+            app:onRefreshListener="@{() -> viewmodel.refreshTeams()}">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/fragment_team_list_swipe_to_refresh"
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_team_list_rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                showWhenLoading="@{viewmodel.teams}"
-                app:onRefreshListener="@{() -> viewmodel.refreshTeams()}">
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fragment_team_list_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    items="@{viewmodel.teams}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                items="@{viewmodel.teams}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
