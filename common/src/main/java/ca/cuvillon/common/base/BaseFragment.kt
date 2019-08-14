@@ -6,14 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import ca.cuvillon.common.extensions.setupSnackbar
 import ca.cuvillon.common.utils.Event
 import ca.cuvillon.navigation.NavigationCommand
+import com.google.android.material.snackbar.Snackbar
 
 abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         observeNavigation(getViewModel())
+        setupSnackbar(this, getViewModel().snackBarError, Snackbar.LENGTH_LONG)
     }
 
     abstract fun getViewModel(): BaseViewModel

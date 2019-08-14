@@ -12,6 +12,10 @@ abstract class BaseViewModel : ViewModel() {
     private val _navigation = MutableLiveData<Event<NavigationCommand>>()
     val navigation: LiveData<Event<NavigationCommand>> = _navigation
 
+    // ERROR
+    protected val _snackbarError = MutableLiveData<Event<@androidx.annotation.StringRes Int>>()
+    val snackBarError: LiveData<Event<Int>> get() = _snackbarError
+
     /**
      * Handle navigation directly from [ViewModel].
      */
