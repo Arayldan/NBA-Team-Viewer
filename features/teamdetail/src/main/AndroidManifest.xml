@@ -1,2 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="ca.cuvillon.teamdetail"/>
+    package="ca.cuvillon.teamdetail" />
