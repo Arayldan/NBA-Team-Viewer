@@ -22,4 +22,13 @@ data class Team(
 
     @ColumnInfo(name = "last_refreshed")
     val lastRefreshed: Date
-)
+) {
+    /**
+     * Shared sealed class to specify the order for a [List] of teams.
+     */
+    sealed class OrderBy {
+        object Name : OrderBy()
+        object Win : OrderBy()
+        object Loss : OrderBy()
+    }
+}

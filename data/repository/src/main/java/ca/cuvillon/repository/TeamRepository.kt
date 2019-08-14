@@ -14,7 +14,7 @@ import java.util.Date
 import java.util.concurrent.TimeUnit
 
 interface TeamRepository {
-    suspend fun getTeams(forceRefresh: Boolean = false): LiveData<Resource<List<Team>>>
+    suspend fun getTeams(forceRefresh: Boolean = false, orderBy: Team.OrderBy): LiveData<Resource<List<Team>>>
     suspend fun getTeamAndPlayers(id: Int): LiveData<Resource<TeamAndPlayers>>
 }
 
@@ -24,10 +24,14 @@ internal class TeamRepositoryImpl(
     private val teamPlayersDao: TeamPlayersDao
 ) : TeamRepository {
 
-    override suspend fun getTeams(forceRefresh: Boolean): LiveData<Resource<List<Team>>> {
+    override suspend fun getTeams(forceRefresh: Boolean, orderBy: Team.OrderBy): LiveData<Resource<List<Team>>> {
         return object : NetworkResource<List<Team>, List<TeamDto>, List<TeamAndPlayers>>() {
             override suspend fun loadFromDb(): List<Team>? {
-                return teamDao.getAll()
+                return when (orderBy) {
+                    Team.OrderBy.Name -> teamDao.getAllOrderedByName()
+                    Team.OrderBy.Win -> teamDao.getAllOrderedByWin()
+                    Team.OrderBy.Loss -> teamDao.getAllOrderedByLoss()
+                }
             }
 
             override suspend fun shouldFetch(data: List<Team>?): Boolean {

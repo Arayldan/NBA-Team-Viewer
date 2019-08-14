@@ -1,4 +1,7 @@
 <resources>
     <string name="team_list">Team List</string>
     <string name="team_score">%1$d-%2$d</string>
+    <string name="menu_title_sort_by_name">Sort by name</string>
+    <string name="menu_title_sort_by_win">Sort by win</string>
+    <string name="menu_title_sort_by_loss">Sort by loss</string>
 </resources>

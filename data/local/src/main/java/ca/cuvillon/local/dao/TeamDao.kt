@@ -9,7 +9,13 @@ import java.util.Date
 interface TeamDao : BaseDao<Team> {
 
     @Query("SELECT * FROM team ORDER BY full_name ASC")
-    suspend fun getAll(): List<Team>
+    suspend fun getAllOrderedByName(): List<Team>
+
+    @Query("SELECT * FROM team ORDER BY wins DESC")
+    suspend fun getAllOrderedByWin(): List<Team>
+
+    @Query("SELECT * FROM team ORDER BY losses DESC")
+    suspend fun getAllOrderedByLoss(): List<Team>
 
     @Query("DELETE FROM team")
     suspend fun clear()

@@ -26,6 +26,8 @@ internal class TeamListViewModel(
     val teams: LiveData<Resource<List<Team>>> get() = _teams
     private var teamsSource: LiveData<Resource<List<Team>>> = MutableLiveData()
 
+    private var orderBy: Team.OrderBy = Team.OrderBy.Name // Default order
+
     init {
         getTeams(false)
     }
@@ -39,9 +41,14 @@ internal class TeamListViewModel(
         navigate(TeamListFragmentDirections.actionTeamListFragmentToTeamDetailFragment(team.id))
     }
 
+    fun sortTeams(orderBy: Team.OrderBy) {
+        this.orderBy = orderBy
+        getTeams(false)
+    }
+
     private fun getTeams(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
         _teams.removeSource(teamsSource)
-        withContext(dispatchers.io) { teamsSource = getTeamsUseCase(forceRefresh) }
+        withContext(dispatchers.io) { teamsSource = getTeamsUseCase(forceRefresh, orderBy) }
         _teams.addSource(teamsSource) {
             _teams.value = it
         }
