@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Team Detail</string>
+    <string name="player_name">%1$s %2$s</string>
 </resources>

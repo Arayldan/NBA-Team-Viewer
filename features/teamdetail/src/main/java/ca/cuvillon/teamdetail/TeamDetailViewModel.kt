@@ -24,24 +24,16 @@ internal class TeamDetailViewModel(
     val teamAndPlayers: LiveData<TeamAndPlayers> get() = _teamAndPlayers
     private var teamAndPlayersSource: LiveData<Resource<TeamAndPlayers>> = MutableLiveData()
 
-    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
-    val isLoading: LiveData<Boolean> get() = _isLoading
-
     fun loadData(teamId: Int) {
         argsTeamId = teamId
-        getTeam(false)
+        getTeam()
     }
 
-    fun refreshData() {
-        getTeam(true)
-    }
-
-    private fun getTeam(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
+    private fun getTeam() = viewModelScope.launch(dispatchers.main) {
         _teamAndPlayers.removeSource(teamAndPlayersSource)
-        withContext(dispatchers.io) { teamAndPlayersSource = getTeamDetailUseCase(forceRefresh, argsTeamId) }
+        withContext(dispatchers.io) { teamAndPlayersSource = getTeamDetailUseCase(argsTeamId) }
         _teamAndPlayers.addSource(teamAndPlayersSource) {
             it?.data?.let(_teamAndPlayers::setValue)
-            _isLoading.value = it is Resource.Loading
         }
     }
 }

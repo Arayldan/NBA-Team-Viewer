@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import ca.cuvillon.common.base.BaseFragment
 import ca.cuvillon.common.base.BaseViewModel
 import ca.cuvillon.teamdetail.databinding.FragmentTeamdetailBinding
+import ca.cuvillon.teamdetail.views.PlayerListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -28,10 +29,15 @@ internal class TeamDetailFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        configureRecyclerView()
         viewModel.loadData(args.teamId)
     }
 
     override fun getViewModel(): BaseViewModel {
         return viewModel
+    }
+
+    private fun configureRecyclerView() {
+        binding.fragmentTeamDetailRv.adapter = PlayerListAdapter()
     }
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 interface TeamRepository {
     suspend fun getTeams(forceRefresh: Boolean = false): LiveData<Resource<List<Team>>>
-    suspend fun getTeamAndPlayers(forceRefresh: Boolean = false, id: Int): LiveData<Resource<TeamAndPlayers>>
+    suspend fun getTeamAndPlayers(id: Int): LiveData<Resource<TeamAndPlayers>>
 }
 
 internal class TeamRepositoryImpl(
@@ -48,14 +48,14 @@ internal class TeamRepositoryImpl(
         }.build().asLiveData()
     }
 
-    override suspend fun getTeamAndPlayers(forceRefresh: Boolean, id: Int): LiveData<Resource<TeamAndPlayers>> {
+    override suspend fun getTeamAndPlayers(id: Int): LiveData<Resource<TeamAndPlayers>> {
         return object : NetworkResource<TeamAndPlayers, List<TeamDto>, List<TeamAndPlayers>>() {
             override suspend fun loadFromDb(): TeamAndPlayers? {
                 return teamPlayersDao.findTeamWithPlayersById(id)
             }
 
             override suspend fun shouldFetch(data: TeamAndPlayers?): Boolean {
-                return forceRefresh || data == null || shouldRefresh(data.team.lastRefreshed)
+                return data == null || shouldRefresh(data.team.lastRefreshed)
             }
 
             override suspend fun fetch(): List<TeamDto> {

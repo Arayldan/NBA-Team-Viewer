@@ -8,8 +8,8 @@ import ca.cuvillon.repository.utils.Resource
 
 internal class GetTeamDetailUseCase(private val repository: TeamRepository) {
 
-    suspend operator fun invoke(forceRefresh: Boolean = false, teamId: Int): LiveData<Resource<TeamAndPlayers>> {
-        return Transformations.map(repository.getTeamAndPlayers(forceRefresh, teamId)) {
+    suspend operator fun invoke(teamId: Int): LiveData<Resource<TeamAndPlayers>> {
+        return Transformations.map(repository.getTeamAndPlayers(teamId)) {
             it // TODO Use ViewState
         }
     }

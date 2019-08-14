@@ -1,15 +1,14 @@
 package ca.cuvillon.teamdetail.views
 
 import androidx.databinding.BindingAdapter
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.RecyclerView
+import ca.cuvillon.model.entities.Player
 
 internal object TeamDetailBinding {
 
-    @BindingAdapter("showWhenLoading")
+    @BindingAdapter("items")
     @JvmStatic
-    fun showWhenLoading(view: SwipeRefreshLayout, isLoading: Boolean?) {
-        if (isLoading != null) {
-            view.isRefreshing = isLoading
-        }
+    fun setItems(recyclerView: RecyclerView, resource: List<Player>?) {
+        resource?.let((recyclerView.adapter as PlayerListAdapter)::submitList)
     }
 }
