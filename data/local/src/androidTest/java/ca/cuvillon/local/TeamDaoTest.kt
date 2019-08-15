@@ -22,7 +22,7 @@ class TeamDaoTest : BaseDaoTest() {
 
     override fun setUp() = runBlocking {
         super.setUp()
-        
+
         // Insert teams not ordered by name asc, nor by win desc, nor by loss desc
         teamDao.insertAll(listOf(teamB, teamA, teamC))
     }
