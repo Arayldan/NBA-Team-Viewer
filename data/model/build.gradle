@@ -4,4 +4,6 @@ dependencies {
     implementation KotlinLibraries.kotlin
     implementation AndroidLibraries.roomRunTime
     implementation Libraries.gson
+    // TEST
+    testImplementation TestLibraries.junit
 }
