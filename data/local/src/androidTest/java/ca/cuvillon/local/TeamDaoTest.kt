@@ -2,9 +2,7 @@ package ca.cuvillon.local
 
 import ca.cuvillon.local.base.BaseDaoTest
 import ca.cuvillon.local.dao.TeamDao
-import ca.cuvillon.local.utils.testEarliestDate
-import ca.cuvillon.local.utils.testLatestDate
-import ca.cuvillon.model.entities.Team
+import ca.cuvillon.common_test.datasets.TeamDataSet
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -16,15 +14,11 @@ class TeamDaoTest : BaseDaoTest() {
 
     private val teamDao: TeamDao by inject()
 
-    private val teamA = Team(id = 1, name = "A", wins = 0, losses = 3, lastRefreshed = testEarliestDate)
-    private val teamB = Team(id = 2, name = "B", wins = 1, losses = 2, lastRefreshed = testLatestDate)
-    private val teamC = Team(id = 3, name = "C", wins = 2, losses = 1, lastRefreshed = testLatestDate)
-
     override fun setUp() = runBlocking {
         super.setUp()
 
         // Insert teams not ordered by name asc, nor by win desc, nor by loss desc
-        teamDao.insertAll(listOf(teamB, teamA, teamC))
+        teamDao.insertAll(listOf(TeamDataSet.teamB, TeamDataSet.teamA, TeamDataSet.teamC))
     }
 
     @Test
@@ -33,9 +27,9 @@ class TeamDaoTest : BaseDaoTest() {
         assertEquals(3, teamList.size)
 
         // Ensure team list is sorted by name
-        assertEquals(teamA, teamList[0])
-        assertEquals(teamB, teamList[1])
-        assertEquals(teamC, teamList[2])
+        assertEquals(TeamDataSet.teamA, teamList[0])
+        assertEquals(TeamDataSet.teamB, teamList[1])
+        assertEquals(TeamDataSet.teamC, teamList[2])
     }
 
     @Test
@@ -44,9 +38,9 @@ class TeamDaoTest : BaseDaoTest() {
         assertEquals(3, teamList.size)
 
         // Ensure team list is sorted by win
-        assertEquals(teamC, teamList[0])
-        assertEquals(teamB, teamList[1])
-        assertEquals(teamA, teamList[2])
+        assertEquals(TeamDataSet.teamC, teamList[0])
+        assertEquals(TeamDataSet.teamB, teamList[1])
+        assertEquals(TeamDataSet.teamA, teamList[2])
     }
 
     @Test
@@ -55,9 +49,9 @@ class TeamDaoTest : BaseDaoTest() {
         assertEquals(3, teamList.size)
 
         // Ensure team list is sorted by loss
-        assertEquals(teamA, teamList[0])
-        assertEquals(teamB, teamList[1])
-        assertEquals(teamC, teamList[2])
+        assertEquals(TeamDataSet.teamA, teamList[0])
+        assertEquals(TeamDataSet.teamB, teamList[1])
+        assertEquals(TeamDataSet.teamC, teamList[2])
     }
 
     @Test
@@ -74,7 +68,7 @@ class TeamDaoTest : BaseDaoTest() {
 
     @Test
     fun testGetMinimalLastRefreshed() = runBlocking {
-        assertEquals(testEarliestDate, teamDao.getMinimalLastRefreshed())
+        assertEquals(TeamDataSet.earliestDate, teamDao.getMinimalLastRefreshed())
     }
 
     @Test

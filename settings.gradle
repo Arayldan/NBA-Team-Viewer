@@ -1,6 +1,7 @@
 include Modules.app
 include Modules.navigation
 include Modules.common
+include Modules.commonTest
 include Modules.model
 include Modules.local
 include Modules.remote

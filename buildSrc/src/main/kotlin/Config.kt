@@ -10,6 +10,7 @@ object Modules {
     const val navigation = ":navigation"
 
     const val common = ":common"
+    const val commonTest = ":common_test"
 
     const val model = ":model"
     const val local = ":local"

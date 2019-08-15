@@ -28,4 +28,5 @@ dependencies {
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.androidTestRunner
     androidTestImplementation TestLibraries.koin
+    androidTestImplementation project(Modules.commonTest)
 }
