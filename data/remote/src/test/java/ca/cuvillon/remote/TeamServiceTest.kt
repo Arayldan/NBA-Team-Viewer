@@ -4,11 +4,8 @@ import ca.cuvillon.remote.base.BaseServiceTest
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.fail
 import org.junit.Test
 import org.koin.test.inject
-import retrofit2.HttpException
-import java.net.HttpURLConnection
 
 class TeamServiceTest : BaseServiceTest() {
 
@@ -16,8 +13,6 @@ class TeamServiceTest : BaseServiceTest() {
 
     @Test
     fun testGetTeams() = runBlocking {
-        mockHttpResponse(FakeEndpoints.GET_TEAMS)
-
         val teams = teamService.getTeams()
         assertNotNull(teams)
         assertEquals(30, teams.size)
@@ -38,12 +33,5 @@ class TeamServiceTest : BaseServiceTest() {
         assertEquals("Allen", player.lastName)
         assertEquals(45, player.number)
         assertEquals("SG", player.position)
-    }
-
-    @Test(expected = HttpException::class)
-    fun testGetTeams_andFail() = runBlocking {
-        mockHttpResponse(FakeEndpoints.GET_TEAMS, HttpURLConnection.HTTP_FORBIDDEN)
-        teamService.getTeams()
-        fail()
     }
 }
