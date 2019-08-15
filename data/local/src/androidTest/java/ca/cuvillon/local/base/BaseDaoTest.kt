@@ -18,7 +18,7 @@ import org.koin.test.inject
 @RunWith(JUnit4::class)
 abstract class BaseDaoTest : KoinTest {
 
-    protected val database: AppDatabase by inject()
+    private val database: AppDatabase by inject()
 
     @Before
     open fun setUp() {

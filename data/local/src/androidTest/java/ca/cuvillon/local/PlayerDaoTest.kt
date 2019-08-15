@@ -6,15 +6,11 @@ import ca.cuvillon.local.dao.PlayerDao
 import ca.cuvillon.model.entities.Player
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import org.koin.test.inject
 
 class PlayerDaoTest : BaseDaoTest() {
 
-    private lateinit var playerDao: PlayerDao
-
-    override fun setUp() {
-        super.setUp()
-        playerDao = database.playerDao()
-    }
+    private val playerDao: PlayerDao by inject()
 
     @Test(expected = SQLiteConstraintException::class)
     fun testInsert_playerWithoutTeamInDatabase() = runBlocking {

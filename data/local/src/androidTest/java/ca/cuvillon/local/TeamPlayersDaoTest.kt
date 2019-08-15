@@ -1,6 +1,8 @@
 package ca.cuvillon.local
 
 import ca.cuvillon.local.base.BaseDaoTest
+import ca.cuvillon.local.dao.PlayerDao
+import ca.cuvillon.local.dao.TeamDao
 import ca.cuvillon.local.dao.TeamPlayersDao
 import ca.cuvillon.model.entities.Player
 import ca.cuvillon.model.entities.Team
@@ -10,11 +12,14 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Test
+import org.koin.test.inject
 import java.util.Date
 
 class TeamPlayersDaoTest : BaseDaoTest() {
 
-    private lateinit var teamPlayersDao: TeamPlayersDao
+    private val teamPlayersDao: TeamPlayersDao by inject()
+    private val teamDao: TeamDao by inject()
+    private val playerDao: PlayerDao by inject()
 
     private val team = Team(id = 1, name = "A", wins = 0, losses = 3, lastRefreshed = Date())
     private val players = listOf(
@@ -24,11 +29,10 @@ class TeamPlayersDaoTest : BaseDaoTest() {
 
     override fun setUp() = runBlocking {
         super.setUp()
-        teamPlayersDao = database.teamPlayersDao()
 
         // Insert a team and its players
-        database.teamDao().insert(team)
-        database.playerDao().insertAll(players)
+        teamDao.insert(team)
+        playerDao.insertAll(players)
     }
 
     @Test

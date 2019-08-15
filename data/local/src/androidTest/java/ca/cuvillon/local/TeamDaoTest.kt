@@ -10,18 +10,19 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.koin.test.inject
 
 class TeamDaoTest : BaseDaoTest() {
 
-    private lateinit var teamDao: TeamDao
+    private val teamDao: TeamDao by inject()
+
     private val teamA = Team(id = 1, name = "A", wins = 0, losses = 3, lastRefreshed = testEarliestDate)
     private val teamB = Team(id = 2, name = "B", wins = 1, losses = 2, lastRefreshed = testLatestDate)
     private val teamC = Team(id = 3, name = "C", wins = 2, losses = 1, lastRefreshed = testLatestDate)
 
     override fun setUp() = runBlocking {
         super.setUp()
-        teamDao = database.teamDao()
-
+        
         // Insert teams not ordered by name asc, nor by win desc, nor by loss desc
         teamDao.insertAll(listOf(teamB, teamA, teamC))
     }
