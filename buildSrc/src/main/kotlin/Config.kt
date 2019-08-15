@@ -56,6 +56,7 @@ object Versions {
     const val retrofit = "2.6.1"
     const val okHttp = "4.1.0"
     const val coroutines = "1.2.2"
+    const val mockWebServer = "4.1.0"
 }
 
 object Config {
@@ -124,4 +125,6 @@ object TestLibraries {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     // KOIN
     const val koin = "org.koin:koin-test:${Versions.koin}"
+    // MOCK WEBSERVER
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
 }
