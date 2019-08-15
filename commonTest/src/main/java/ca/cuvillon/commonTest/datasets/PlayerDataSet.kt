@@ -1,4 +1,4 @@
-package ca.cuvillon.common_test.datasets
+package ca.cuvillon.commonTest.datasets
 
 import ca.cuvillon.model.dtos.PlayerDto
 import ca.cuvillon.model.entities.Player

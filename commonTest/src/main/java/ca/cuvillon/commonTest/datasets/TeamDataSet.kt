@@ -1,4 +1,4 @@
-package ca.cuvillon.common_test.datasets
+package ca.cuvillon.commonTest.datasets
 
 import ca.cuvillon.model.dtos.TeamDto
 import ca.cuvillon.model.entities.Team
@@ -13,6 +13,7 @@ object TeamDataSet {
     /**
      * Earliest [Date] object used for tests.
      */
+    @Suppress("MagicNumber")
     val earliestDate: Date = GregorianCalendar(2010, Calendar.NOVEMBER, 3, 8, 34, 57).time
 
     /**

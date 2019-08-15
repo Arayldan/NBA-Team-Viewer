@@ -4,8 +4,8 @@ import ca.cuvillon.local.base.BaseDaoTest
 import ca.cuvillon.local.dao.PlayerDao
 import ca.cuvillon.local.dao.TeamDao
 import ca.cuvillon.local.dao.TeamPlayersDao
-import ca.cuvillon.common_test.datasets.TeamAndPlayersDataSet
-import ca.cuvillon.common_test.datasets.TeamDataSet
+import ca.cuvillon.commonTest.datasets.TeamAndPlayersDataSet
+import ca.cuvillon.commonTest.datasets.TeamDataSet
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

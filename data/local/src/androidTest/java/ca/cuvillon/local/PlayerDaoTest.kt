@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteConstraintException
 import ca.cuvillon.local.base.BaseDaoTest
 import ca.cuvillon.local.dao.PlayerDao
 import ca.cuvillon.local.dao.TeamDao
-import ca.cuvillon.common_test.datasets.PlayerDataSet
+import ca.cuvillon.commonTest.datasets.PlayerDataSet
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.koin.test.inject
