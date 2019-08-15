@@ -1,8 +1,8 @@
 package ca.cuvillon.local
 
+import ca.cuvillon.commonTest.datasets.TeamDataSet
 import ca.cuvillon.local.base.BaseDaoTest
 import ca.cuvillon.local.dao.TeamDao
-import ca.cuvillon.commonTest.datasets.TeamDataSet
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -68,7 +68,9 @@ class TeamDaoTest : BaseDaoTest() {
 
     @Test
     fun testGetMinimalLastRefreshed() = runBlocking {
-        assertEquals(TeamDataSet.earliestDate, teamDao.getMinimalLastRefreshed())
+        val team = TeamDataSet.teamA.copy(lastRefreshed = TeamDataSet.earliestDate)
+        teamDao.insert(team) // Update Team A with the earliest refreshed date
+        assertEquals(team.lastRefreshed, teamDao.getMinimalLastRefreshed())
     }
 
     @Test

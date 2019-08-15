@@ -8,6 +8,7 @@ import ca.cuvillon.model.dtos.toTeamAndPlayersEntity
 import ca.cuvillon.model.entities.Team
 import ca.cuvillon.model.entities.TeamAndPlayers
 import ca.cuvillon.remote.TeamDataSource
+import ca.cuvillon.repository.utils.DateNow
 import ca.cuvillon.repository.utils.NetworkResource
 import ca.cuvillon.repository.utils.Resource
 import java.util.Date
@@ -21,7 +22,8 @@ interface TeamRepository {
 internal class TeamRepositoryImpl(
     private val dataSource: TeamDataSource,
     private val teamDao: TeamDao,
-    private val teamPlayersDao: TeamPlayersDao
+    private val teamPlayersDao: TeamPlayersDao,
+    private val dateNow: DateNow
 ) : TeamRepository {
 
     override suspend fun getTeams(forceRefresh: Boolean, orderBy: Team.OrderBy): LiveData<Resource<List<Team>>> {
@@ -47,7 +49,7 @@ internal class TeamRepositoryImpl(
             }
 
             override fun processResponse(response: List<TeamDto>): List<TeamAndPlayers> {
-                return response.toTeamAndPlayersEntity(lastRefreshed = Date())
+                return response.toTeamAndPlayersEntity(lastRefreshed = dateNow.get())
             }
         }.build().asLiveData()
     }
@@ -71,17 +73,17 @@ internal class TeamRepositoryImpl(
             }
 
             override fun processResponse(response: List<TeamDto>): List<TeamAndPlayers> {
-                return response.toTeamAndPlayersEntity(lastRefreshed = Date())
+                return response.toTeamAndPlayersEntity(lastRefreshed = dateNow.get())
             }
         }.build().asLiveData()
     }
 
+    private fun shouldRefresh(lastRefreshed: Date?): Boolean {
+        return lastRefreshed == null ||
+            TimeUnit.MILLISECONDS.toMinutes(dateNow.get().time - lastRefreshed.time) >= FRESH_TIME_IN_MINUTES
+    }
+
     companion object {
         private const val FRESH_TIME_IN_MINUTES = 10
-
-        private fun shouldRefresh(lastRefreshed: Date?): Boolean {
-            return lastRefreshed == null ||
-                TimeUnit.MILLISECONDS.toMinutes(Date().time - lastRefreshed.time) >= FRESH_TIME_IN_MINUTES
-        }
     }
 }

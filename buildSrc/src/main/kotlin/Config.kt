@@ -57,6 +57,8 @@ object Versions {
     const val okHttp = "4.1.0"
     const val coroutines = "1.2.2"
     const val mockWebServer = "4.1.0"
+    const val arch = "2.0.1"
+    const val mockk = "1.9.3"
 }
 
 object Config {
@@ -123,8 +125,14 @@ object TestLibraries {
     const val junit = "junit:junit:${Versions.junit}"
     const val androidTestRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    val archCoreTest = "androidx.arch.core:core-testing:${Versions.arch}"
     // KOIN
     const val koin = "org.koin:koin-test:${Versions.koin}"
     // MOCK WEBSERVER
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
+    // MOCK
+    val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    val mockk = "io.mockk:mockk:${Versions.mockk}"
+    // COROUTINE
+    val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 }

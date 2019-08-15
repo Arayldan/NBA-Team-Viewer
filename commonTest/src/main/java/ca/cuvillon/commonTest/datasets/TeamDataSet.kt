@@ -25,7 +25,7 @@ object TeamDataSet {
     }.time
 
     const val TEAM_A_ID = 1 // Avoid circular initialization
-    val teamA = Team(id = TEAM_A_ID, name = "A", wins = 0, losses = 3, lastRefreshed = earliestDate)
+    val teamA = Team(id = TEAM_A_ID, name = "A", wins = 0, losses = 3, lastRefreshed = latestDate)
     val teamDtoA = TeamDto(id = TEAM_A_ID, name = "A", wins = 0, losses = 3, players = PlayerDataSet.playerDtosA)
 
     const val TEAM_B_ID = 2 // Avoid circular initialization
@@ -35,4 +35,6 @@ object TeamDataSet {
     const val TEAM_C_ID = 3 // Avoid circular initialization
     val teamC = Team(id = TEAM_C_ID, name = "C", wins = 2, losses = 1, lastRefreshed = latestDate)
     val teamDtoC = TeamDto(id = TEAM_C_ID, name = "C", wins = 2, losses = 1, players = PlayerDataSet.playerDtosC)
+
+    val teams = listOf(teamA, teamB, teamC)
 }
