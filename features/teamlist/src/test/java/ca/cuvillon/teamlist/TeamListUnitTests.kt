@@ -127,4 +127,40 @@ class TeamListUnitTests {
 
         confirmVerified(observer)
     }
+
+    @Test
+    fun `User clicks on sort by name`() {
+        `User clicks on sort by`(Team.OrderBy.Name)
+    }
+
+    @Test
+    fun `User clicks on sort by win`() {
+        `User clicks on sort by`(Team.OrderBy.Win)
+    }
+
+    @Test
+    fun `User clicks on sort by loss`() {
+        `User clicks on sort by`(Team.OrderBy.Loss)
+    }
+
+    private fun `User clicks on sort by`(orderBy: Team.OrderBy) {
+        val observer = mockk<Observer<Resource<List<Team>>>>(relaxed = true)
+        val result = Resource.Success(TeamDataSet.teams)
+        coEvery {
+            getTeamsUseCase(any(), any())
+        } returns MutableLiveData<Resource<List<Team>>>().apply {
+            value = result
+        }
+
+        teamListViewModel = TeamListViewModel(getTeamsUseCase, appDispatchers)
+        teamListViewModel.teams.observeForever(observer)
+        teamListViewModel.sortTeams(orderBy)
+
+        verify(exactly = 2) {
+            observer.onChanged(result) // When VM is created
+            observer.onChanged(result) // When Teams are sorted
+        }
+
+        confirmVerified(observer)
+    }
 }
