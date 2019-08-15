@@ -18,8 +18,8 @@ interface TeamDao : BaseDao<Team> {
     suspend fun getAllOrderedByLoss(): List<Team>
 
     @Query("DELETE FROM team")
-    suspend fun clear()
+    suspend fun deleteAll()
 
     @Query("SELECT MIN(last_refreshed) FROM team")
-    suspend fun findMinimalLastRefreshed(): Date?
+    suspend fun getMinimalLastRefreshed(): Date?
 }

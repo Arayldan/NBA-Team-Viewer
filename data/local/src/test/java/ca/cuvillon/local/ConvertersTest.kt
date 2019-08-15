@@ -1,6 +1,6 @@
 package ca.cuvillon.local
 
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Calendar
 
@@ -18,11 +18,11 @@ class ConvertersTest {
 
     @Test
     fun dateToTimestamp() {
-        Assert.assertEquals(date.time, Converters().dateToTimestamp(date))
+        assertEquals(date.time, Converters().dateToTimestamp(date))
     }
 
     @Test
     fun fromTimestamp() {
-        Assert.assertEquals(Converters().fromTimestamp(date.time), date)
+        assertEquals(date, Converters().fromTimestamp(date.time))
     }
 }

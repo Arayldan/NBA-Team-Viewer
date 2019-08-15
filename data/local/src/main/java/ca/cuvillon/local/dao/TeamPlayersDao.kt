@@ -11,12 +11,12 @@ abstract class TeamPlayersDao(private val appDatabase: AppDatabase) {
 
     @Transaction
     open suspend fun insert(items: List<TeamAndPlayers>) {
-        appDatabase.teamDao().clear() // Delete all teams before inserting new teams
-        appDatabase.teamDao().insert(items.map { it.team })
-        appDatabase.playerDao().insert(items.flatMap { it.players })
+        appDatabase.teamDao().deleteAll() // Delete all teams before inserting new teams
+        appDatabase.teamDao().insertAll(items.map { it.team })
+        appDatabase.playerDao().insertAll(items.flatMap { it.players })
     }
 
     @Transaction
-    @Query("SELECT * FROM team WHERE id = :id")
-    abstract suspend fun findTeamWithPlayersById(id: Int): TeamAndPlayers?
+    @Query("SELECT * FROM team WHERE id = :teamId")
+    abstract suspend fun getTeamAndPlayersForTeam(teamId: Int): TeamAndPlayers?
 }

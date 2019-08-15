@@ -35,7 +35,7 @@ internal class TeamRepositoryImpl(
             }
 
             override suspend fun shouldFetch(data: List<Team>?): Boolean {
-                return forceRefresh || shouldRefresh(teamDao.findMinimalLastRefreshed())
+                return forceRefresh || shouldRefresh(teamDao.getMinimalLastRefreshed())
             }
 
             override suspend fun fetch(): List<TeamDto> {
@@ -55,7 +55,7 @@ internal class TeamRepositoryImpl(
     override suspend fun getTeamAndPlayers(id: Int): LiveData<Resource<TeamAndPlayers>> {
         return object : NetworkResource<TeamAndPlayers, List<TeamDto>, List<TeamAndPlayers>>() {
             override suspend fun loadFromDb(): TeamAndPlayers? {
-                return teamPlayersDao.findTeamWithPlayersById(id)
+                return teamPlayersDao.getTeamAndPlayersForTeam(id)
             }
 
             override suspend fun shouldFetch(data: TeamAndPlayers?): Boolean {

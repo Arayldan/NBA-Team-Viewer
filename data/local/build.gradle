@@ -27,5 +27,5 @@ dependencies {
     // TEST
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.androidTestRunner
-    androidTestImplementation TestLibraries.espresso
+    androidTestImplementation TestLibraries.koin
 }
