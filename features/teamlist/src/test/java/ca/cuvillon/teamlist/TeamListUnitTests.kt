@@ -18,7 +18,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -102,7 +102,7 @@ class TeamListUnitTests {
         teamListViewModel = TeamListViewModel(getTeamsUseCase, appDispatchers)
         teamListViewModel.clickOnItem(TeamDataSet.teams.first())
 
-        Assert.assertEquals(event.peekContent(), getValue(teamListViewModel.navigation).peekContent())
+        assertEquals(event.peekContent(), getValue(teamListViewModel.navigation).peekContent())
     }
 
     @Test
