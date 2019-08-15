@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ca.cuvillon.commonTest.utilities
+package ca.cuvillon.common.utils
 
 import androidx.lifecycle.LiveData
 import java.util.concurrent.CountDownLatch

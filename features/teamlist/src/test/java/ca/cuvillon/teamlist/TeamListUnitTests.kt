@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.filters.SmallTest
 import ca.cuvillon.common.utils.Event
+import ca.cuvillon.common.utils.getValue
 import ca.cuvillon.commonTest.datasets.TeamDataSet
-import ca.cuvillon.commonTest.utilities.getValue
 import ca.cuvillon.model.entities.Team
 import ca.cuvillon.navigation.NavigationCommand
 import ca.cuvillon.repository.AppDispatchers
